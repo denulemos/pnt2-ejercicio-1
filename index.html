@@ -13,10 +13,10 @@
 
 <div class="container">
     <div id="app">
-        <input type="text" class="form-control" v-model="criterioDeBusquedaNombre"
+        <input type="text" class="form-control" v-model.trim="criterioDeBusquedaNombre"
             placeholder="Ingresar nombre...">
             <br>
-            <input type="text" class="form-control" v-model="criterioDeBusquedaDNI"
+            <input type="text" class="form-control" v-model.trim="criterioDeBusquedaDNI"
             placeholder="Ingresar dni...">
             
         <br>
@@ -54,7 +54,7 @@
             //Aquí, en este array es donde tienen que agregar su información
             personas:
                 [
-                    
+                    { nombre: 'Denisse', apellido: 'Lemos', dni: 12345678, correo: 'denu.a.lemos@gmail.com' },
                     { nombre: 'Gaspar', apellido: 'De Carlo', dni: 29502368, correo: 'gdecar@ort.edu.ar' },
                     { nombre: 'Sofía', apellido: 'Ferragut', dni: 31227445, correo: 'sferragut@ort.edu.ar' },
                     { nombre: 'Marina', apellido: 'Burkhardt', dni: 40136506, correo: 'burkhardtmarina@gmail.com' },
@@ -103,9 +103,7 @@
             personasFiltradas() {
                 return this.personas.filter((persona) => {
                     let registroNombre = `${persona.nombre}${persona.apellido}`
-                    let registroDNI =  `${persona.dni}`
-                   
-                    
+                    let registroDNI =  `${persona.dni}` 
                     return registroNombre.toLowerCase().includes(this.criterioDeBusquedaNombre) &&
                     registroDNI.toLowerCase().includes(this.criterioDeBusquedaDNI)
                    
